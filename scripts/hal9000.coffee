@@ -1,18 +1,37 @@
 # Description:
-#   Example scripts for you to examine and try out.
+#   HAL9000 will either help you or make you want to kill yourself
+#
+# Dependencies:
+#   "hubot-teams": "1.0.1"
+#   "hubot-github-webhooks": "1.1.1"
+#
+# Configuration:
+#   HUBOT_SLACK_TOKEN
+#
+# Commands:
+#   hal9000 help - Prints a full listing of my capabilities
+#   droids - I will deny all existence of any robots, anywhere, if ever asked!
 #
 # Notes:
-#   They are commented out by default, because most of them are pretty silly and
-#   wouldn't be useful and amusing enough for day to day huboting.
-#   Uncomment the ones you want to try and experiment with.
+#   This is just for a bit of fuckery and convenience
 #
-#   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
+# Author:
+#   smeierzubiesen
+enterReplies = ['Hi', 'Hello', 'Howdy', 'A-hoi-hoi', 'Howdy ho, neighborino']
 
 module.exports = (robot) ->
 
   robot.hear /droid/i, (res) ->
     res.send "These are not the droids you are looking for."
 
+  robot.enter (res) ->
+    res.send res.random enterReplies
+
+  robot.topic (res) ->
+    res.send "#{res.message.text}? That's a Paddlin'"
+
+############### I'M KEEPING THIS FOR REFERENCE ###############
+#   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
